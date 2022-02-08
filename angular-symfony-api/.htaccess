@@ -1,0 +1,9 @@
+RewriteEngine On
+
+# Redirect the /api routing to Symfony (index.php)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^api /index.php [L]
+
+# Redirect all the rest to Angular (index.html)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ /index.html [L]

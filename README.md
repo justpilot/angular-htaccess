@@ -4,6 +4,7 @@ Compilation of Angular .htaccess files
 ## Navigation
 
 - [Angular Internationalization](#internationalization)
+- [Angular and Symfony - same Directory](#symfony-api)
 - [Useful Links](#useful-links)
 
 ## Internationalization
@@ -20,6 +21,14 @@ e.g. https://www.your-website-example.com/en/login, preserving the navigation ro
 ### Installation:
 
 Place the .htaccess file in the root directory.
+
+## Symfony API
+
+You need a modified .htaccess file if you place the Angular **index.html** file in the same directory (e.g. **/public**) as the Symfony **index.php** file.
+
+### Installation:
+
+Place the .htaccess file in the **/public** directory.
 
 ## Useful Links
 
