@@ -1,0 +1,32 @@
+RewriteEngine on
+
+# Redirection to HTTPS:
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+RewriteBase /
+RewriteRule ^../index\.html$ - [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule (de|en) $1/index.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP:Accept-Language} ^en [NC]
+RewriteRule ^(.+)$ /en/$1 [R]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{HTTP:Accept-Language} !^en [NC]
+RewriteRule ^(.+)$ /de/$1 [R]
+
+RewriteCond %{HTTP:Accept-Language} ^de [NC]
+RewriteRule ^$ /de/ [R]
+
+RewriteCond %{HTTP:Accept-Language} ^en [NC]
+RewriteRule ^$ /en/ [R]
+
+RewriteCond %{HTTP:Accept-Language} !^en [NC]
+RewriteCond %{HTTP:Accept-Language} !^de [NC]
+RewriteRule ^$ /de/ [R]
